@@ -1,0 +1,39 @@
+# Cyber Anomaly Detection & SIEM Integration
+
+## 1. Overview  
+This project ingests raw network flow data, trains an anomaly-detection model, calibrates thresholds, and exposes:
+
+- **An analyst dashboard** (Streamlit) for interactive exploration  
+- **A SIEM dashboard** (Elasticsearch/Kibana) for real-world SOC use, complete with alert rules  
+
+---
+
+## 2. Repository Layout  
+```text
+cyber_anomaly_detection/
+├─ dashboard/            ← Streamlit UI
+│  └─ 04_dashboard.py
+├─ scripts/              ← ETL, modeling & thresholding scripts
+│  ├─ 01_data_loading.py
+│  ├─ 02_anomaly_detection_modeling.py
+│  └─ 03_threshold_calibration.py
+├─ data/
+│  ├─ raw/
+│  └─ processed/
+├─ reports/              ← project summaries, exported slides & screenshots
+│  ├─ .gitkeep
+│  └─ project_summary.md
+├─ docker-compose.yml    ← Elasticsearch & Kibana services
+├─ requirements.txt
+└─ README.md
+
+##3. How to Run
+pip install -r requirements.txt
+streamlit run dashboard/04_dashboard.py
+
+ Elastic SIEM Dashboard
+ docker-compose up -d
+    1.  Go to http://localhost:5601
+	2.	Machine Learning → Data Visualizer → Upload data/processed/anomaly_scores.csv
+	3.	Analytics → Dashboard → Load your “Cyber Anomaly SIEM Dashboard”
+    
